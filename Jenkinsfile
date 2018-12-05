@@ -10,6 +10,9 @@ node('linux') {
     sh 'ant' 
     sh 'ant -f build.xml -v'
     }
+    stage('Deploy') {    
+      echo "${BUILD_URL}"
+    }
     stage('Report') {    
       sh 'aws cloudformation describe-stack-resources --region us-east-1 --stack-name jenkins'
     
