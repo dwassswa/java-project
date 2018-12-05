@@ -11,7 +11,7 @@ node('linux') {
       sh 'ant -f build.xml -v'
     }
     stage('Deploy') { 
-      sh '${WORKSPACE}/*/rectangle-${BUILD_NUMBER}.jar'
+      sh 'chmod u+x ${WORKSPACE}/*/rectangle-${BUILD_NUMBER}.jar'
       sh 'aws s3 cp rectangle-${BUILD_NUMBER}.jar s3://assignment-10-bucket/rectangle-${BUILD_NUMBER}.jar'
     }
     stage('Report') {    
