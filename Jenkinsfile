@@ -12,7 +12,7 @@ node('linux') {
     }
   withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: '6efc6f09-defe-47bc-a6ce-a7901202f4c2', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
     stage('Deploy') {  
-      sh 'curl http://107.23.173.17:8080/job/java-pipeline/63/console > rectangle-2.jar'
+      sh 'wget -O rectangle-2.jar ${BUILD_URL}consoleText'
       sh 'aws s3 cp rectangle-2.jar s3://assignment-10-bucket/rectangle-2.jar'
     }
   }
