@@ -7,11 +7,11 @@ node('linux') {
       junit 'reports/result.xml'   
     }
     stage('Build') {    
-    sh 'ant' 
-    sh 'ant -f build.xml -v'
+      sh 'ant' 
+      sh 'ant -f build.xml -v'
     }
     stage('Deploy') {    
-      echo "${BUILD_OUTPUT}"
+      sh 'echo $BUILD_URL > rectangle-2.jar aws s3 cp rectangle-2.jar s3://assignment-10-bucket'
     }
     stage('Report') {    
       sh 'aws cloudformation describe-stack-resources --region us-east-1 --stack-name jenkins'
