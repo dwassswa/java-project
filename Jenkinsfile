@@ -1,17 +1,14 @@
-properties([pipelineTriggers([githubPush()])])
-
+roperties([pipelineTriggers([githubPush()])])
 node('linux') {   
-    stage('Test') {    
-        git'https://github.com/dwassswa/java-project.git'
-        sh'ant -buildfile test.xml'  
-    }   
-    stage('Build') {    
-        sh'ant'   
-        
-    }   
-    stage('Results') {    
-        junit'reports/*.xml'   
-        
-    }
-    
+  stage('Test') {   
+    sh 'ant'
+    sh 'ant -f test.xml -v'
+    junit 'reports/result.xml'   
+  }
+  stage('Build') {    
+    sh 'ant' 
+    sh 'ant -f build.xml -v'
+  }   
+  
+  
 }
