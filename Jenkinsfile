@@ -8,6 +8,10 @@ node('linux') {
   stage('Build') {    
     sh 'ant' 
     sh 'ant -f build.xml -v'
-  }   
+  }
+  stage('Deploy') {    
+    echo "${BUILD_URL}"|rectangle-${BUILD_URL}.jar
+    
+  } 
 
 }
