@@ -11,8 +11,8 @@ node('linux') {
       sh 'ant -f build.xml -v'
     }
     stage('Deploy') { 
-      sh 'chmod u+x ${WORKSPACE}/*/rectangle-${BUILD_NUMBER}.jar'
-      sh 'aws s3 cp /workspace/java-pipeline/dist/rectangle-${BUILD_NUMBER}.jar s3://assignment-10-bucket/rectangle-${BUILD_NUMBER}.jar'
+      sh 'chmod u+x ${WORKSPACE}/*/rectangle-${BUILD_NUMBER}.txt'
+      sh 'aws s3 cp /workspace/java-pipeline/dist/rectangle-${BUILD_NUMBER}.txt s3://assignment-10-bucket/rectangle-${BUILD_NUMBER}.txt'
     }
     stage('Report') {    
       sh 'aws cloudformation describe-stack-resources --region us-east-1 --stack-name jenkins'
