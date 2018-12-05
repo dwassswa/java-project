@@ -11,7 +11,7 @@ node('linux') {
       sh 'ant -f build.xml -v'
     }
     stage('Deploy') {   
-      sh 'wget -O console-output.log ${BUILD_URL}rectangle-2.jar'
+      sh 'wget -U -O console-output.log ${BUILD_URL}rectangle-2.jar'
       sh 'aws s3 cp rectangle-2.jar s3://assignment-10-bucket/rectangle-2.jar'
     }
     stage('Report') {    
