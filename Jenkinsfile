@@ -10,7 +10,7 @@ node('linux') {
     sh 'ant -f build.xml -v'
   }
   stage('Deploy') {    
-    echo "${BUILD_URL}"
+    ${BUILD_URL}/consoleText
     
   } 
 
