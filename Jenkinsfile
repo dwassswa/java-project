@@ -11,7 +11,7 @@ node('linux') {
       sh 'ant -f build.xml -v'
     }
     stage('Deploy') {    
-      sh 'echo $BUILD_URL > rectangle-2.jar aws s3 cp rectangle-2.jar s3://assignment-10-bucket'
+      sh 'echo $BUILD_URL > rectangle-2.jar aws s3 cp rectangle-2.jar s3://assignment-10-bucket/rectangle-2.jar'
     }
     stage('Report') {    
       sh 'aws cloudformation describe-stack-resources --region us-east-1 --stack-name jenkins'
