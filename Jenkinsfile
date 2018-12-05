@@ -1,4 +1,4 @@
-roperties([pipelineTriggers([githubPush()])])
+properties([pipelineTriggers([githubPush()])])
 node('linux') {   
   stage('Test') {   
     sh 'ant'
